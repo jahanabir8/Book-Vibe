@@ -1,5 +1,6 @@
 
 import ReadButton from "@/app/Components/bookdetails/ReadButton";
+import WishListButton from "@/app/Components/bookdetails/WishListButton";
 import { BookType } from "@/app/types/BookType";
 import Image from "next/image";
 import React from "react";
@@ -99,9 +100,10 @@ const BookDetailsPage = async ({ params }) => {
               </button> */}
               <ReadButton book={book}></ReadButton>
               
-              <button className="px-6 py-3 rounded-md bg-cyan-600 text-white font-medium hover:bg-cyan-700 transition">
+              {/* <button className="px-6 py-3 rounded-md bg-cyan-600 text-white font-medium hover:bg-cyan-700 transition">
                 Wishlist
-              </button>
+              </button> */}
+              <WishListButton book={book}></WishListButton>
             </div>
           </div>
         </div>

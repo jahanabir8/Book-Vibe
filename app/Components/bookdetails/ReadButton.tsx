@@ -1,13 +1,19 @@
 'use client'
 
+import { BookType } from "@/app/types/BookType";
 import { BooksContext } from "@/CreateContext/BooksProvider";
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
-const ReadButton = ({book}) => {
+export interface buttonPageType{
+    book: BookType;
+}
+
+const ReadButton = ({book}: buttonPageType) => {
     const {readBooks, setReadBooks} = useContext(BooksContext)
     const handleReadBooks = ()=>{
-        // console.log('Clicked');
         setReadBooks([...readBooks, book])
+        toast.success(`You have added - ${book.bookName} as Read Books`)
     }
     console.log(readBooks);
   return (
@@ -18,3 +24,4 @@ const ReadButton = ({book}) => {
 };
 
 export default ReadButton;
+

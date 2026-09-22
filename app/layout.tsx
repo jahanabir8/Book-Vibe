@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Components/Shared/Navbar";
 import BooksProvider from "@/CreateContext/BooksProvider";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <BooksProvider>
           <Navbar />
           {children}
+
+          <ToastContainer />
         </BooksProvider>
       </body>
     </html>

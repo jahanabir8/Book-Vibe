@@ -11,7 +11,7 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link className={pathName === '/' ? 'text-[#23BE0A] border-2 border-[#23BE0A]' : ''} href="/">Home</Link>
+        <Link className={pathName === '/books' ? 'text-[#23BE0A] border-2 border-[#23BE0A]' : ''} href="/books">Books</Link>
       </li>
       <li>
         <Link className={pathName === '/listedbooks' ? 'text-[#23BE0A] border-2 border-[#23BE0A]' : ''} href="/listedbooks">Listed Books</Link>
@@ -51,13 +51,13 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div 
+          <Link href='/' 
           // className="btn btn-ghost text-xl"
           className="flex items-center gap-1 cursor-pointer font-bold text-black"
           >
             <Image src={Logo} alt="logo"></Image>
             Book Vibe
-          </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>

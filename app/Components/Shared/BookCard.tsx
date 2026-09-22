@@ -4,12 +4,12 @@ import React from "react";
 import { BookType } from "../../types/BookType";
 
 export interface BookCardProps {
-  book: BookType
+  book: BookType;
 }
 
 export default function BookCard({ book }: BookCardProps) {
-    const {
-    bookId,
+  const {
+    id,
     bookName,
     author,
     image,
@@ -20,7 +20,8 @@ export default function BookCard({ book }: BookCardProps) {
     publisher,
     yearOfPublishing,
   } = book;
-  return     <div className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+  return (
+    <div className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       {/* Book Cover */}
       <div className="relative h-72 overflow-hidden bg-gray-100">
         <Image
@@ -78,7 +79,7 @@ export default function BookCard({ book }: BookCardProps) {
 
         {/* Button */}
         <div className="border-t border-gray-100 pt-4">
-          <Link href={`/books/${bookId}`}>
+          <Link href={`/books/${id}`}>
             <button className="w-full rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-700 cursor-pointer">
               View Details
             </button>
@@ -86,4 +87,5 @@ export default function BookCard({ book }: BookCardProps) {
         </div>
       </div>
     </div>
+  );
 }

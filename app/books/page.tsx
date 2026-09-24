@@ -3,7 +3,9 @@ import BookCard from '../Components/Shared/BookCard';
 import { BookType } from '../../app/types/BookType';
 
 const getBooksData = async()=>{
-    const res = await fetch('http://localhost:5000/books', {cache: 'no-store'})
+      const res = await fetch(`${process.env.NEXT_PULIC_SERVER_BASE_URL}/books`, {
+  cache: 'no-store' // 💡 Changed from 'caches' to 'cache'
+});
     return await res.json()
 }
 

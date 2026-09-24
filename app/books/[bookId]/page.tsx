@@ -8,8 +8,8 @@ import React from "react";
 const BookDetailsPage = async ({ params }) => {
   const { bookId } = await params;
 
-  const res = await fetch(`http://localhost:5000/books/${bookId}`, {
-  cache: 'no-store' // 💡 Changed from 'caches' to 'cache'
+const res = await fetch(`${process.env.NEXT_PULIC_SERVER_BASE_URL}/books/${bookId}`, {
+  cache: "no-store",
 });
 
   if (!res.ok) {

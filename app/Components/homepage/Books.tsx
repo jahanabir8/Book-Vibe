@@ -4,7 +4,9 @@ import { BookType } from "../../types/BookType";
 import Link from "next/link";
 
 const getBooksData = async () => {
-  const res = await fetch("http://localhost:5000/books");
+    const res = await fetch(`${process.env.NEXT_PULIC_SERVER_BASE_URL}/books`, {
+  cache: 'no-store' // 💡 Changed from 'caches' to 'cache'
+});
   return await res.json();
 };
 

@@ -23,7 +23,7 @@ export default function ListedBookCard({ book }: BookCardProps) {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-pink-200 bg-pink-50/60 p-4">
       {/* Decorative background stripes */}
-      <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_28px,rgba(255,255,255,0.6)_28px,rgba(255,255,255,0.6)_56px)] pointer-events-none" />
+      <div className="absolute inset-0 grid pointer-events-none" />
 
       <div className="relative flex gap-5">
         {/* Book Cover */}

@@ -17,7 +17,7 @@ const Navbar = () => {
         <Link className={pathName === '/listedbooks' ? 'text-[#23BE0A] border-2 border-[#23BE0A]' : ''} href="/listedbooks">Listed Books</Link>
       </li>
       <li>
-        <Link className={pathName === '/pagestoread' ? 'text-[#23BE0A] border-2 border-[#23BE0A]' : ''} href="/pagestoread">Pages to Read</Link>
+        <Link className={pathName === '/read-books' ? 'text-[#23BE0A] border-2 border-[#23BE0A]' : ''} href="/read-books">Read Books</Link>
       </li>
     </>
   );

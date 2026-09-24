@@ -12,6 +12,29 @@ const ListedBooks = () => {
 
 //   console.log(readBooks, wishList, "readBooks", "wishList");
 
+  const sortBooks = (books: BookType[]) =>{
+    const sortedBooks = [...books]
+
+    if(sortBy === 'rating'){
+      sortedBooks.sort((a,b)=> b.rating - a.rating);
+    }  else if(sortBy === 'pages'){
+      sortedBooks.sort((a,b)=> a.totalPages - b.totalPages)
+    } else{
+      sortedBooks.sort((a,b)=> a.yearOfPublishing - b.yearOfPublishing)
+    }
+
+    return sortedBooks;
+    
+  }
+
+
+  const sortedReadBooks = sortBooks(readBooks)
+  const sortedWishList = sortBooks(wishList)
+
+  
+  console.log(sortedReadBooks, 'sortedReadbooks');
+  console.log(sortedWishList, 'sortedWishList');
+
     console.log(sortBy, 'sortby');
   return (
     <div className="container mx-auto py-20 px-4">
@@ -42,7 +65,7 @@ const ListedBooks = () => {
         />
         <div className="tab-content border-base-300 bg-base-100 p-10 gap-2">
           {readBooks.length > 0 ? (
-            readBooks.map((book: BookType, index: number) => (
+            sortedReadBooks.map((book: BookType, index: number) => (
               <ListedBookCard key={index} book={book} />
             ))
           ) : (
@@ -59,7 +82,7 @@ const ListedBooks = () => {
         />
         <div className="tab-content border-base-300 bg-base-100 p-10 gap-2">
           {wishList.length > 0 ? (
-            wishList.map((book: BookType, index: number) => (
+            sortedWishList.map((book: BookType, index: number) => (
               <ListedBookCard key={index} book={book} />
             ))
           ) : (

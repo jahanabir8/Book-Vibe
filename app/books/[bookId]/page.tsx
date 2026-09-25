@@ -1,32 +1,27 @@
-
 import ReadButton from "@/app/Components/bookdetails/ReadButton";
 import WishListButton from "@/app/Components/bookdetails/WishListButton";
-import { BookType } from "@/app/types/BookType";
 import Image from "next/image";
 import React from "react";
+import { getBookById } from "@/app/lib/books";
+import { notFound } from "next/navigation";
 
-const BookDetailsPage = async ({ params }) => {
+interface PageProps {
+  params: Promise<{ bookId: string }>;
+}
+
+const BookDetailsPage = async ({ params }: PageProps) => {
   const { bookId } = await params;
 
-const res = await fetch(`${process.env.NEXT_PULIC_SERVER_BASE_URL}/books/${bookId}`, {
-  cache: "no-store",
-});
+  const book = await getBookById(bookId);
 
-  if (!res.ok) {
-    return <p>Book not found.</p>;
-  }
-
-  const book: BookType = await res.json();
-
-  if (!book || Object.keys(book).length === 0) {
-    return <p>Book not found.</p>;
+  if (!book) {
+    notFound();
   }
 
   const { tags } = book;
 
   return (
     <div>
-      <p>Book Details Page</p>
       <section className="bg-pink-50 relative overflow-hidden">
         {/* Decorative background stripes */}
         <div className="absolute" />
@@ -36,11 +31,11 @@ const res = await fetch(`${process.env.NEXT_PULIC_SERVER_BASE_URL}/books/${bookI
           <div className="flex justify-center">
             <div className="relative w-72 h-96 shadow-2xl rounded-sm overflow-hidden">
               <Image
-              src={book.image}
-              alt={book.bookName}
-              fill
-              className="object-cover"
-            ></Image>
+                src={book.image}
+                alt={book.bookName}
+                fill
+                className="object-cover"
+              ></Image>
             </div>
           </div>
 
@@ -95,14 +90,7 @@ const res = await fetch(`${process.env.NEXT_PULIC_SERVER_BASE_URL}/books/${bookI
 
             {/* Buttons */}
             <div className="flex gap-4">
-              {/* <button className="px-6 py-3 rounded-md border border-gray-300 bg-white font-medium text-gray-800 hover:bg-gray-50 transition">
-                Read
-              </button> */}
               <ReadButton book={book}></ReadButton>
-              
-              {/* <button className="px-6 py-3 rounded-md bg-cyan-600 text-white font-medium hover:bg-cyan-700 transition">
-                Wishlist
-              </button> */}
               <WishListButton book={book}></WishListButton>
             </div>
           </div>

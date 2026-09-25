@@ -1,13 +1,13 @@
 "use client";
 
-import { BooksContext } from "@/CreateContext/BooksProvider";
-import React, { useContext, useState } from "react";
+import { useBooksContext } from "@/CreateContext/BooksProvider";
+import React, { useState } from "react";
 // import BookCard from "../Components/Shared/BookCard";
 import { BookType } from "../types/BookType";
 import ListedBookCard from "../Components/Shared/ListedBookCard";
 
 const ListedBooks = () => {
-  const { readBooks, wishList } = useContext(BooksContext);
+  const { readBooks, wishList } = useBooksContext();
   const [ sortBy, setSortBy ] = useState<"rating" | "pages" | "year">("rating");
 
 //   console.log(readBooks, wishList, "readBooks", "wishList");
